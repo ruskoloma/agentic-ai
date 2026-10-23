@@ -1,0 +1,5 @@
+file               lines  words  chars  tokens
+sample.txt             5     32    198      42
+hello.py               9      9     88      12
+token_tally.py        62    228   1762     304
+TOTAL                                      358

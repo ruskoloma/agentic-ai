@@ -1,0 +1,5 @@
+Agentic engineering is not vibe coding.
+The model generates; you verify.
+Every token you send is re-sent on the next turn.
+Sessions are disposable, but documents are durable.
+Never marry a session.
