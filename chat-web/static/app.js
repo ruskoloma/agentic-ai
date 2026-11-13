@@ -3,8 +3,26 @@ const message = document.querySelector('#message');
 const messages = document.querySelector('#messages');
 const status = document.querySelector('#status');
 const send = document.querySelector('#send');
+const newChat = document.querySelector('#new-chat');
 const chatHistory = [];
 let pending = false;
+let conversationVersion = 0;
+
+function setPending(value) {
+  pending = value;
+  send.disabled = value;
+  message.disabled = value;
+  model.disabled = value;
+}
+
+function resetChat() {
+  conversationVersion++;
+  chatHistory.length = 0;
+  messages.replaceChildren();
+  message.value = '';
+  status.textContent = '';
+  setPending(false);
+}
 
 async function loadModels() {
   try {
@@ -45,10 +63,8 @@ async function sendMessage() {
   }
 
   const userMessage = { role: 'user', content };
-  pending = true;
-  send.disabled = true;
-  message.disabled = true;
-  model.disabled = true;
+  const requestVersion = conversationVersion;
+  setPending(true);
   status.textContent = 'Waiting for a reply...';
   const userLine = showMessage('You', content);
   try {
@@ -62,23 +78,23 @@ async function sendMessage() {
       throw new Error(typeof data.detail === 'string' ? data.detail : 'Could not get a reply. Please try again.');
     }
     const data = await response.json();
+    if (requestVersion !== conversationVersion) return;
     if (typeof data.reply !== 'string') throw new Error('Invalid reply.');
     chatHistory.push(userMessage, { role: 'assistant', content: data.reply });
     showMessage('Model', data.reply);
     message.value = '';
     status.textContent = '';
   } catch (error) {
+    if (requestVersion !== conversationVersion) return;
     userLine.remove();
     status.textContent = error.message || 'Could not get a reply. Please try again.';
   } finally {
-    pending = false;
-    send.disabled = false;
-    message.disabled = false;
-    model.disabled = false;
+    if (requestVersion === conversationVersion) setPending(false);
   }
 }
 
 send.addEventListener('click', sendMessage);
+newChat.addEventListener('click', resetChat);
 message.addEventListener('keydown', event => {
   if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
     event.preventDefault();

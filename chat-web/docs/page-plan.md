@@ -4,7 +4,7 @@
 - [x] Step 2: Add labeled model, conversation, message, send, new-chat and status controls; add readable responsive styling and keyboard focus. Check: open `/`, tab through controls, and resize the window.
 - [x] Step 3: Load model names from `/models`, handle empty/error responses, and safely render a successful button-sent message and reply with browser-held history. Check: compare selector to `/models`, send `<i>hi</i>` and verify literal tags, then tell the model a name and ask it to recall it.
 - [x] Step 4: Add Enter and Shift+Enter behavior, pending status and protection against duplicate sends, and recoverable `/chat` errors that leave failed messages out of history. Check: exercise both keys and busy state, stop Ollama for an error, restart and send successfully.
-- [ ] Step 5: Implement New chat with reset of displayed and in-memory history, including safe behavior during an outstanding request. Check: tell the model a name, reset, and verify the next exchange has no previous context; inspect `/docs` and verify local assets and unchanged dependencies and routes.
+- [x] Step 5: Implement New chat with reset of displayed and in-memory history, including safe behavior during an outstanding request. Check: tell the model a name, reset, and verify the next exchange has no previous context; inspect `/docs` and verify local assets and unchanged dependencies and routes.
 
 ## Review notes
 
