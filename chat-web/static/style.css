@@ -1,0 +1,113 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #1d2939;
+  background: #f2f4f7;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.chat {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  border-radius: 0.75rem;
+}
+
+.chat-header, .actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chat-header {
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+select, textarea, button {
+  font: inherit;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 0.6rem;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #667085;
+  border-radius: 0.35rem;
+}
+
+textarea {
+  display: block;
+  resize: vertical;
+}
+
+button {
+  padding: 0.55rem 1rem;
+  color: #fff;
+  background: #175cd3;
+  border: 1px solid #175cd3;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1849a9;
+}
+
+:focus-visible {
+  outline: 3px solid #f79009;
+  outline-offset: 3px;
+}
+
+.conversation {
+  min-height: 12rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 0.35rem;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  .chat {
+    padding: 1rem;
+  }
+}
