@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local chat</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Local chat</h1>
+      <button id="new-chat" type="button">New chat</button>
+    </header>
+    <div class="model-row">
+      <label for="model">Model</label>
+      <select id="model" disabled><option>Loading models…</option></select>
+      <button id="reload-models" type="button">Refresh models</button>
+    </div>
+    <section id="messages" aria-label="Conversation" aria-live="polite"></section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <form id="chat-form">
+      <label for="message">Message</label>
+      <textarea id="message" rows="3" placeholder="Type a message" required></textarea>
+      <div class="form-footer">
+        <small>Enter to send · Shift+Enter for a new line</small>
+        <button id="send" type="submit" disabled>Send</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
