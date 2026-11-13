@@ -1,6 +1,6 @@
 # Chat page implementation plan
 
-- [ ] Step 1: Serve a placeholder from `static/index.html` at `/`, mount `/static`, and create the three local assets. Check: start the app, open `/` and `/static/`, and confirm `/docs` lists all four existing routes.
+- [x] Step 1: Serve a placeholder from `static/index.html` at `/`, mount `/static`, and create the three local assets. Check: start the app, open `/` and `/static/`, and confirm `/docs` lists all four existing routes.
 - [ ] Step 2: Add labeled model, conversation, message, send, new-chat and status controls; add readable responsive styling and keyboard focus. Check: open `/`, tab through controls, and resize the window.
 - [ ] Step 3: Load model names from `/models`, handle empty/error responses, and safely render a successful button-sent message and reply with browser-held history. Check: compare selector to `/models`, send `<i>hi</i>` and verify literal tags, then tell the model a name and ask it to recall it.
 - [ ] Step 4: Add Enter and Shift+Enter behavior, pending status and protection against duplicate sends, and recoverable `/chat` errors that leave failed messages out of history. Check: exercise both keys and busy state, stop Ollama for an error, restart and send successfully.
