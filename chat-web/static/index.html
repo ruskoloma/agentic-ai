@@ -8,7 +8,32 @@
   <script src="/static/app.js" defer></script>
 </head>
 <body>
-  <h1>Chat</h1>
-  <p>The chat page is coming soon.</p>
+  <main class="chat">
+    <header class="chat-header">
+      <h1>Chat</h1>
+      <button type="button" id="new-chat">New chat</button>
+    </header>
+
+    <div class="model-field">
+      <label for="model">Model</label>
+      <select id="model" name="model">
+        <option value="">Select a model</option>
+      </select>
+    </div>
+
+    <section class="conversation" aria-labelledby="conversation-heading" aria-live="polite" aria-relevant="additions text">
+      <h2 id="conversation-heading">Conversation</h2>
+      <div id="messages"></div>
+    </section>
+
+    <div class="message-field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+    </div>
+    <div class="actions">
+      <button type="button" id="send">Send</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </div>
+  </main>
 </body>
 </html>
