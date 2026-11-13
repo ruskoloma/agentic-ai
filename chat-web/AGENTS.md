@@ -6,6 +6,16 @@ chat-web is a small API for practicing agent-assisted development and working wi
 ## Stack
 Python 3, FastAPI, uvicorn.
 
+## Structure
+- `main.py` contains the FastAPI application and its routes.
+- `static/` holds the chat page: HTML, CSS, and JavaScript.
+- `docs/` contains specifications, plans, logs, and evidence.
+
+## Conventions
+- Build the page with plain HTML, CSS, and JavaScript in `static/`, with no framework, build step, or external assets.
+- Display user and model messages with `textContent`, never `innerHTML`.
+- Keep each chat focused on one task. When a plan exists, use it to track completed and next steps.
+
 ## How to run
 Activate the virtual environment, then run `uvicorn main:app --reload`.
 Test bench: http://127.0.0.1:8000/docs
