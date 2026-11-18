@@ -16,6 +16,11 @@ Python 3, FastAPI, uvicorn.
 - Display user and model messages with `textContent`, never `innerHTML`.
 - Keep each chat focused on one task. When a plan exists, use it to track completed and next steps.
 
+## Testing
+- Tests live in `tests/` and run with `python -m pytest` from the chat-web folder.
+- Fake every call to Ollama; tests must not call the real service.
+- Cover the behaviors in `docs/test-plan.md` and check response bodies as well as status codes.
+
 ## How to run
 Activate the virtual environment, then run `uvicorn main:app --reload`.
 Test bench: http://127.0.0.1:8000/docs
