@@ -14,3 +14,11 @@
 | 10 | POST /chat is 502 with Ollama's message when Ollama answers with an error | An upstream error becomes a bad gateway response including its explanation. | `test_chat_returns_502_with_ollama_error` |
 | 11 | POST /chat is 503 when Ollama is down | A connection failure yields service unavailable and a useful explanation. | `test_chat_returns_503_when_ollama_is_down` |
 | 12 | GET / serves the chat page with its controls | The root serves HTML containing the controls needed to use chat. | `test_root_serves_chat_page_with_controls` |
+
+## Sabotage log
+
+| What I broke | Test that failed | Restored? |
+|---|---|---|
+| Changed `/health` from `ok` to `okay`. | `test_health_returns_ok` | Yes; all 13 tests passed afterward. |
+| Changed `/chat` to send `stream: true`. | `test_chat_sends_whole_history_without_streaming` and `test_chat_uses_selected_model` | Yes; all 13 tests passed afterward. |
+| Sent only the last chat message to Ollama. | `test_chat_sends_whole_history_without_streaming` | Yes; all 13 tests passed afterward. |
