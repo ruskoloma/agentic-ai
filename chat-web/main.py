@@ -39,7 +39,7 @@ def health():
 
 @app.post("/echo")
 def echo(request: EchoRequest):
-    return {"message": request.message, "length": len(request.message) - 1}
+    return {"message": request.message, "length": len(request.message)}
 
 
 @app.post("/chat")
