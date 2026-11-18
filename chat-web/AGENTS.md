@@ -20,6 +20,8 @@ Python 3, FastAPI, uvicorn.
 - Tests live in `tests/` and run with `python -m pytest` from the chat-web folder.
 - Fake every call to Ollama; tests must not call the real service.
 - Cover the behaviors in `docs/test-plan.md` and check response bodies as well as status codes.
+- Never edit or delete a test to make it pass. Fix the code, or stop and explain why the test appears wrong.
+- Do not add, remove, or change packages in requirements.txt unless I ask.
 
 ## How to run
 Activate the virtual environment, then run `uvicorn main:app --reload`.
@@ -36,3 +38,4 @@ Test bench: http://127.0.0.1:8000/docs
 
 ## Done means
 The requested behavior works, existing routes still work, and the changes and checks are explained clearly.
+- `python -m pytest` passes.

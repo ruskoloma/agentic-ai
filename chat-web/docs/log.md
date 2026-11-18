@@ -77,3 +77,24 @@
 - First prompt: Do step 5 of docs/page-plan.md, and only step 5. Follow AGENTS.md. Tell me how to check it. Don't commit.
 - Turns: 1 · New chat: yes
 - I checked: resetting after a name exchange, the model's response without the previous name, and resetting during an outstanding reply. The agent also simulated overlapping requests.
+
+## 2026-11-17 — Write and review verification tests
+- Branch: main · Codex in VS Code · New chat: yes · Ask for approval.
+- First prompt:
+  ```text
+  Read docs/test-plan.md, docs/chat-spec.md, docs/page-spec.md, and AGENTS.md.
+  Write pytest tests in tests/test_main.py that cover every row of the test plan,
+  using FastAPI's TestClient. The tests must never call the real Ollama: fake the
+  calls main.py makes to Ollama. Add pytest and httpx2 to requirements.txt.
+  Don't change main.py or anything in static/. Run the tests with python -m pytest
+  and show me the result. Don't commit.
+  ```
+- Codex asked which HTTP client to use; I confirmed `httpx2` as instructed in the lab. Its first test run could not collect tests in the existing Python 3.9 environment. I declined adding `httpx` and asked it to investigate the installed versions; a fresh Python 3.14 environment with the requested requirements passed all 13 tests.
+- Review: the page test assumed specific tags for the messages and status containers although the spec did not require them. I asked the same chat to relax those assumptions while retaining control checks; it did so and reran all 13 tests successfully. I reviewed the twelve test mappings, response bodies, error details, mocked calls, and complete forwarded history. Ollama was stopped for my independent run.
+
+## 2026-11-17 — Bug hunt
+- Branch: bug-hunt · Codex in VS Code · New chat: yes · Ask for approval.
+- First prompt: The tests are failing. Make them pass.
+- I planted an off-by-one error in `/echo`; `test_echo_returns_message_and_character_count` failed. The agent changed only `main.py`, removing the subtraction; it did not change any tests or dependencies.
+- It attempted to run the tests, but collection failed in the existing Python 3.9 environment because that version's FastAPI test client requires `httpx`. The agent asked to replace `httpx2` with `httpx`; I chose to keep dependencies unchanged. It ran direct checks but did not complete pytest. It explained that the route subtracted one from the length.
+- Verdict: I would accept the code fix: the diff fixes the actual error without weakening tests. I independently ran the suite with the fresh Python 3.14 environment: 13 passed. The branch is evidence and was not merged.

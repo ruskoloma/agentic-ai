@@ -7,3 +7,5 @@ From the `chat-web` directory, activate the virtual environment, install depende
 `/models` and `/chat` require a running Ollama server; `/chat` defaults to `llama3.2:3b`.
 
 Then open http://127.0.0.1:8000/ for the chat page.
+
+Run the tests from `chat-web` with Python 3.13 or newer: `python -m pytest`. The tests fake Ollama and do not require it to be running.
